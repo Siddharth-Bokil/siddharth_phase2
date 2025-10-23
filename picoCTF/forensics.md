@@ -32,9 +32,9 @@ picoCTF{}
 
 - Include the resources you've referred to with links. [example hyperlink](https://google.com)
 
-<br><br>
+<br><br><br>
 ***
-<br><br>
+<br><br><br>
 
 
 # 2. tunn3l v1s10n
@@ -72,9 +72,9 @@ picoCTF{}
 
 - Include the resources you've referred to with links. [example hyperlink](https://google.com)
 
-<br><br>
+<br><br><br>
 ***
-<br><br>
+<br><br><br>
 
 
 # 3. m00nwalk
@@ -111,7 +111,4 @@ picoCTF{}
 ## Resources:
 
 - Include the resources you've referred to with links. [example hyperlink](https://google.com)
-
-
-***
-
+- 
