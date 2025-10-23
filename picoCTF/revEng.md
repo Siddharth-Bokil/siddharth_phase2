@@ -48,6 +48,7 @@ picoCTF{549698}
 
 ## Concepts learnt:
 gdb(GNU Debugger) can be used to disassemble executable files. Running `info functions` in gdb shows all the functions that are present in the disassembled code.
+`print anyBaseNum` returns the decimal equivalent of the number.
 
 ## Notes:
 Given that the challenge was named gdb and explicitly mentioned disassembly, trying to run the executable was foolish.
