@@ -54,10 +54,12 @@ gdb(GNU Debugger) can be used to disassemble executable files. Running `info fun
 Given that the challenge was named gdb and explicitly mentioned disassembly, trying to run the executable was foolish.
 
 ## Resources:
-[Solution I followed along with](https://medium.com/@Oscar404/cracking-picoctf-challenge-gdb-baby-step-1-2d77e8eab818)
+[Solution I followed along](https://medium.com/@Oscar404/cracking-picoctf-challenge-gdb-baby-step-1-2d77e8eab818)
 
+
+<br><br><br>
 ***
-
+<br><br><br>
 
 
 # 2. ARMssembly 1
@@ -96,8 +98,9 @@ picoCTF{}
 - Include the resources you've referred to with links. [example hyperlink](https://google.com)
 
 
+<br><br><br>
 ***
-
+<br><br><br>
 
 
 # 3. Vault Door 3
@@ -134,6 +137,4 @@ picoCTF{}
 ## Resources:
 
 - Include the resources you've referred to with links. [example hyperlink](https://google.com)
-
-
-***
+- 
