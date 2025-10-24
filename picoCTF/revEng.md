@@ -67,35 +67,40 @@ picoCTF{549698}
 > For what argument does this program print `win` with variables 79, 7 and 3? File: chall_1.S Flag format: picoCTF{XXXXXXXX} -> (hex, lowercase, no 0x, and 32 bits. ex. 5614267 would be picoCTF{0055aabb})
 
 ## Solution:
+After watching I few videos on arm assembly, I read the main function to understand that it simply compares the return value of `func` to 0. I had the find the number that would make `func` return 0. Then I went to `func` and saw the number 79, 7, 3 being stored and left shift and division being performed on them. I called these values using python and found the final number to be `3370`. To put it on the format needed, I ran `printf "%0X" 3370` in the terminal to get the hex number as `00000D2A`.
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
-
-```
-put codes & terminal outputs here using triple backticks
-
-you may also use ```python for python codes for example
+```python
+>>> 79 << 7
+10112
+>>> 10112//3
+3370
 ```
 
 ## Flag:
 
 ```
-picoCTF{}
+picoCTF{00000D2A}
 ```
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- "sp" stands for stack pointer. It is the memory address a location in the stack.
+- operations are of the form: `command <dest> <src>` 
+- `str` is used for storing values and `ldr` is used to load values from the stack.
+- `bl` is used to call a function and retrieve it's returned value.
+- `mov` is used to assign a value to a location in the stack.
+- `lsl` for logical left shift, `sdiv` for floor division, `sub` for subtraction, and `ret` for return.
+- Running `printf "%0X" num` returns the number in a hex format in 32 bits and without 0x.
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- It took sometime for me to understand how the values were stored in the stack and accessed from the stack. Other than that, figuring out the last bit on how to convert the number to the required format was also a bit tedious.
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
+- Found [this](https://www.youtube.com/watch?v=1d-6Hv1c39c) in the JTP2 pdfs references
+- Watched [this](https://www.youtube.com/watch?v=waSFccLcnmk) for the last bit
+- Some basic google searchs on what command does what in arm assembly
 
 
 <br><br><br>
