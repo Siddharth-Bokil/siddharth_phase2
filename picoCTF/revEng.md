@@ -114,32 +114,23 @@ picoCTF{00000D2A}
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
+This was a fun challenge. The key was to read the for loops carefully and go through each iteration to make the flag. The `buffer` variables gets compared to `jU5t_a_sna_3lpm18g947_u_4_m9r54f` and must be equal to it for the "access granted" message to show up. Therefore the characters in the buffer had to be matched from the user's input through the for loops. One major thing was that the last for loop rewrites a few characters and understanding why that would still work took some time.
 
-```
-put codes & terminal outputs here using triple backticks
-
-you may also use ```python for python codes for example
-```
 
 ## Flag:
 
 ```
-picoCTF{}
+picoCTF{jU5t_a_s1mpl3_an4gr4m_4_u_79958f}
 ```
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- Looping
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- Initially compiled and ran the code though of no use.
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-- 
+- None used
