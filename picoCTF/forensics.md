@@ -1,5 +1,5 @@
 # 1. Trivial Flag Transfer Protocol
-> Put in the challenge's description here
+> Figure out how they moved the flag.
 
 ## Solution:
 
