@@ -47,12 +47,10 @@ picoCTF{h1dd3n_1n_pLa1n_51GHT_18375919}
 
 # 2. tunn3l v1s10n
 
-> Put in the challenge's description here
+> We found this file. Recover the flag.
 
 ## Solution:
-
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
+I opened the file with my image viewer and get the error "bmp image has unsupported header size".
 
 ```
 put codes & terminal outputs here using triple backticks
