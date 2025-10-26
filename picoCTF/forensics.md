@@ -3,34 +3,42 @@
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
-
+I opened the given pcapng file in wireshark and found 2 text files along with 3 image files. The images were just sceneries and hills. The text had only characters, so I ran rot13 on them like so - 
+```bash
+sid@sidsAsusZenbook:~/cryptoTP$ echo "GSGCQBRFAGRAPELCGBHEGENSSVPFBJRZHFGQVFTHVFRBHESYNTGENAFSRE.SVTHERBHGNJNLGBUVQRGURSYNTNAQVJVYYPURPXONPXSBEGURCYNA" | rot13
+TFTPDOESNTENCRYPTOURTRAFFICSOWEMUSTDISGUISEOURFLAGTRANSFER.FIGUREOUTAWAYTOHIDETHEFLAGANDIWILLCHECKBACKFORTHEPLAN
+sid@sidsAsusZenbook:~/cryptoTP$ echo "VHFRQGURCEBTENZNAQUVQVGJVGU-QHRQVYVTRAPR.PURPXBHGGURCUBGBF" | rot13
+IUSEDTHEPROGRAMANDHIDITWITH-DUEDILIGENCE.CHECKOUTTHEPHOTOS
 ```
-put codes & terminal outputs here using triple backticks
-
-you may also use ```python for python codes for example
+The second text was crucial for the solve. It hinted about the program and a phrase, "DUEDILIGENCE". I tried installing the program to find out it was steghide.
 ```
+sid@sidsAsusZenbook:~/cryptoTP/tftp$ sudo apt install ./program.deb
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Note, selecting 'steghide' instead of './program.deb'
+```
+Then I ran steghide on each image with the passphrase as `DUEDILIGENCE`. The third image had the flag.
 
 ## Flag:
 
 ```
-picoCTF{}
+picoCTF{h1dd3n_1n_pLa1n_51GHT_18375919}
 ```
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- `pcapng` or `pcap` files are used to store packet information
+- `tftp` objects can be extracted using wireshark
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- I wasted a lot of my time on this challenge simply because I didn't have the right version of wireshark. Apparently, wireshark 4.6.0 does not support extraction of `bmp` files as tftp objects but an earlier version, 4.2.2 does.
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
+- Used [this](https://launchpad.net/~wireshark-dev/+archive/ubuntu/stable) to reinstall the correct version of wireshark.
+- Used the steghide man page to figure out how its used.
 
 <br><br><br>
 ***
