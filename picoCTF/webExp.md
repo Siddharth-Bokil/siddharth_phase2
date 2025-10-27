@@ -1,5 +1,5 @@
 # 1. Web Gauntlet
-> Put in the challenge's description here
+> Can you beat the filters? Log in as admin http://shape-facility.picoctf.net:56849/ http://shape-facility.picoctf.net:56849/filter.php
 
 ## Solution:
 
