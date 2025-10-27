@@ -77,37 +77,28 @@ picoCTF{s4rv3r_s1d3_t3mp14t3_1nj3ct10n5_4r3_c001_f5438664}
 
 # 3. Cookies
 
-> Put in the challenge's description here
+> Who doesn't love cookies? Try to figure out the best one. http://mercury.picoctf.net:64944/
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
-
-```
-put codes & terminal outputs here using triple backticks
-
-you may also use ```python for python codes for example
-```
+- The site contains the following dialog box:
+  <img width="1453" height="690" alt="image" src="https://github.com/user-attachments/assets/016d4088-3918-4cfa-977f-95bc3003e55e" />
+I went to inspect element and then cookies, since that was what the challenge was all about. There, I saw a cookie with a value of 0. On entering "snickerdoodle" which was the transparent text in the dialog box, the value changed to 0. Out of curiosity I chaged the value to 1 and reloaded the page and got the name of some other cookie. I went on doign this till the value of 10 all of which gave me names of different cookies and not the flag. Then I checked for 100, 50, and 30, none of which existed. So I went on entering different values for the cookie and value `18` gave me the flag.
 
 ## Flag:
 
 ```
-picoCTF{}
+picoCTF{3v3ry1_l0v3s_c00k135_cc9110ba}
 ```
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- Cookies
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- Fun challenge, but I'm not sure what I would've done if there was a longer list of existing values for the cookie. 
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-- 
-
+None used.
