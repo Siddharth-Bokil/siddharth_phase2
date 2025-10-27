@@ -54,7 +54,7 @@ picoCTF{549698}
 - Given that the challenge was named gdb and explicitly mentioned disassembly, trying to run the executable was foolish.
 
 ## Resources:
-- [Solution I followed along](https://medium.com/@Oscar404/cracking-picoctf-challenge-gdb-baby-step-1-2d77e8eab818)
+Learnt gdb [here](https://www.geeksforgeeks.org/c/gdb-step-by-step-introduction/).
 
 
 <br><br><br>
