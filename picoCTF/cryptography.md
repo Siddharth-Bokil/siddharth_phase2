@@ -103,34 +103,53 @@ This felt more like a reverse engineering challenge than a cryptography challeng
 > Let's decrypt this: ciphertext? Something seems a bit small.
 
 ## Solution:
+Took a lot of time and researching.
+- The first hint guided me to the wikipedia page of RSA and and the second one told me to check for the case in which e is super small, in this case, 3.
+- On the wikipedia page I found,
+  > When encrypting with low encryption exponents (e.g., e = 3) and small values of the m (i.e., m < n1/e), the result of me is strictly less than the modulus n. In this case, ciphertexts can be decrypted easily by taking the eth root of the ciphertext over the integers.
+- Based on this, I make a funciton with a binary search algorithm to decrypt c and give m. Then, decoding the hex form on m gave the flag.
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
 
-```
-put codes & terminal outputs here using triple backticks
+```python
+c = 2205316413931134031074603746928247799030155221252519872650073010782049179856976080512716237308882294226369300412719995904064931819531456392957957122459640736424089744772221933500860936331459280832211445548332429338572369823704784625368933 
 
-you may also use ```python for python codes for example
+start = 1
+end = c
+while end - start > 1:
+    mid = (start + end) // 2
+
+    if (mid ** 3) > c:
+        end = mid
+    else:
+        start = mid
+    
+    if start ** 3 == c:
+        m = start
+    elif end ** 3 == c:
+        m = end
+
+h = hex(m)
+flag = bytes.fromhex(h[2:]).decode()
+print(flag) 
 ```
 
 ## Flag:
 
 ```
-picoCTF{}
+picoCTF{n33d_a_lArg3r_e_ccaa7776}
 ```
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- RSA Encryption/Decryption
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- The biggest mistake I made was assuming the cube root logic will work if only e is small regardless of n. However, m = pow(c,1/e) only when both e and n are considerably small. Figuring this out took way longer than it should've.
+- decoding the flag frmo hex in python was tough due to different ways of doing so in previous versions of python.
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-- 
+- The [wikipedia page](https://en.wikipedia.org/wiki/RSA_cryptosystem).
+- Code for [cubic root](https://www.geeksforgeeks.org/python/python-program-for-find-cubic-root-of-a-number/) of large numbers.
 
