@@ -100,7 +100,7 @@ This felt more like a reverse engineering challenge than a cryptography challeng
 
 # 3. MiniRSA
 
-> Put in the challenge's description here
+> Let's decrypt this: ciphertext? Something seems a bit small.
 
 ## Solution:
 
