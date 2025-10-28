@@ -1,5 +1,8 @@
 # 1. IQ Test
-> Put in the challenge's description here
+> let your input x = 30478191278.
+wrap your answer with nite{ } for the flag.
+As an example, entering x = 34359738368 gives (y0, ..., y11), so the flag would be nite{010000000011}.
+
 
 ## Solution:
 
@@ -39,7 +42,7 @@ picoCTF{}
 
 # 2. I Like Logic
 
-> Put in the challenge's description here
+> i like logic and i like files, apparently, they have something in common, what should my next step be.
 
 ## Solution:
 
@@ -79,7 +82,7 @@ picoCTF{}
 
 # 3. Bare Metal Alchemist
 
-> Put in the challenge's description here
+> my friend recommended me this anime but i think i've heard a wrong name.
 
 ## Solution:
 
