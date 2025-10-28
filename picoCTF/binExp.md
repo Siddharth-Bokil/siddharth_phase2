@@ -1,36 +1,37 @@
 # 1. Buffer Overflow 0
-> Put in the challenge's description here
+> Let's start off simple, can you overflow the correct buffer? The program is available here. You can view source here.
+
+Additional details will be available after launching your challenge instance.
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
-
+- Looking at the code, I saw that the input was being copied to a string of max size 16. To break the program, I just had to input a string have more than 16 characters.
 ```
-put codes & terminal outputs here using triple backticks
-
-you may also use ```python for python codes for example
+sid@sidsAsusZenbook:~/cryptoTP$ nc saturn.picoctf.net 62468
+Input: hi
+The program will exit now
+ok
+sid@sidsAsusZenbook:~/cryptoTP$ nc saturn.picoctf.net 62468
+Input: dfjfdjfdnkjfnkdjndkjfndfkgjnfdkjnlsfdgkjndfjknckzljdflkjfdnkjnlkcjndafjlfddsflakjdbsfkjlbnflkdgjfkldchjkndflkdjgfkdfldsclkfkdnkcjdandjkfbdjkfnslrkfjhdfslihdfgjkcnd
+picoCTF{ov3rfl0ws_ar3nt_that_bad_c5ca6248}
 ```
 
 ## Flag:
 
 ```
-picoCTF{}
+picoCTF{ov3rfl0ws_ar3nt_that_bad_c5ca6248}
 ```
 
 ## Concepts learnt:
-
-- Include the new topics you've come across and explain them in brief
-- 
+- Buffers
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- After completing the challenge, I ran it a few times again to see that a string with 17 characters does not print the flag. I don't understand how many characters exactly are needed to overflow the buffer.
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
+- Learnt about buffers [here.](https://ctf101.org/binary-exploitation/what-are-buffers/)
 
 <br><br><br>
 ***
