@@ -4,12 +4,37 @@
 ## Solution:
 
 - This one took a lot of time and I would say should be a hard rated challenge. On connecting to the nc port, you can either encrypt or decrypt and obviously decrypting the password didn't work. After doing some researching and checking the hints, I found a property of the RSA algo that helps decrypt the flag.
-- The property is basically if I have m^e mod n (which is given) and I can find x^e mod n (which can be found by encrypting through the nc), then multiplying the two numbers gives (x*m)^e mod n which can then be decrypted and divided by x to find m.
-- I chose x as 2 and this is where I got my first big problem. I wanted to input a sequence whose hex is 2, since the nc was encrypting the hex instead of raw input. Then I found a solution to this as providing the input through `echo -e` like in 
-```
-put codes & terminal outputs here using triple backticks
+- The property is basically if I have `m^e mod n` (which is given) and I can find `x^e mod n` (which can be found by encrypting through the nc), then multiplying the two numbers gives `(x*m)^e mod n` which can then be decrypted and divided by x to find m.
+```math
+m^e mod n =  2575135950983117315234568522857995277662113128076071837763492069763989760018604733813265929772245292223046288098298720343542517375538185662305577375746934
 
-you may also use ```python for python codes for example
+2^e mod n = 5067313465613043651275429665315895824157755779222372979446076012356324498190828210335763979330272318657269048435311897896433721115606764442199497891219230
+```
+
+- I chose x as 2 and this is where I got my first big problem. I wanted to input a sequence whose hex is 2, since the nc was encrypting the hex instead of raw input. Then I found a solution to this as providing the input through `echo -e` and `sleep` which I learnt during Clutter Overflow in Binary Exploitation.
+```
+{ printf 'e\n'; sleep 3; echo -e '\x02\n'; } | nc titan.picoctf.net 61347
+```
+
+- After figuring out the math and the input, the last big issue was what was to be done after I got m. Giving some samples values to the nc and cross-checking via ascii tables online, I found out that m is a hex and must be converted to ASCII to use to decrypt the secret.enc file.
+
+```
+m = 215627228002
+>>> hex(215627228002)
+'0x3234626362'
+>>> bytes.fromhex('3234626362').decode()
+'24bcb'
+```
+
+
+- After finding the final ASCII, the third hint had the openssl command for the decryption of the secret.enc file and hence I got the flag.
+
+```
+openssl enc -aes-256-cbc -d -in secret.enc 
+enter AES-256-CBC decryption password:
+*** WARNING : deprecated key derivation used.
+Using -iter or -pbkdf2 would be better.
+picoCTF{su((3ss_(r@ck1ng_r3@_24bcbc66}
 ```
 
 ## Flag:
@@ -20,7 +45,8 @@ picoCTF{su((3ss_(r@ck1ng_r3@_24bcbc66}
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
+- RSA encryption/decryption
+- RSA multiplicative property
 - 
 
 ## Notes:
