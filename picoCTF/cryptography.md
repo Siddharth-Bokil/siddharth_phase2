@@ -3,9 +3,9 @@
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
-
+- This one took a lot of time and I would say should be a hard rated challenge. On connecting to the nc port, you can either encrypt or decrypt and obviously decrypting the password didn't work. After doing some researching and checking the hints, I found a property of the RSA algo that helps decrypt the flag.
+- The property is basically if I have m^e mod n (which is given) and I can find x^e mod n (which can be found by encrypting through the nc), then multiplying the two numbers gives (x*m)^e mod n which can then be decrypted and divided by x to find m.
+- I chose x as 2 and this is where I got my first big problem. I wanted to input a sequence whose hex is 2, since the nc was encrypting the hex instead of raw input. Then I found a solution to this as providing the input through `echo -e` like in 
 ```
 put codes & terminal outputs here using triple backticks
 
@@ -15,7 +15,7 @@ you may also use ```python for python codes for example
 ## Flag:
 
 ```
-picoCTF{}
+picoCTF{su((3ss_(r@ck1ng_r3@_24bcbc66}
 ```
 
 ## Concepts learnt:
