@@ -47,17 +47,16 @@ picoCTF{su((3ss_(r@ck1ng_r3@_24bcbc66}
 
 - RSA encryption/decryption
 - RSA multiplicative property
-- 
+- Hex to bytes, bytes to ascii
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- A _chosen plaintext attack_
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-
+- Found out about the property [here.](https://crypto.stackexchange.com/questions/24880/how-multiplicative-property-of-rsa-can-be-exploited)
+- 
 <br><br><br>
 ***
 <br><br><br>
