@@ -50,33 +50,29 @@ picoCTF{h1dd3n_1n_pLa1n_51GHT_18375919}
 > We found this file. Recover the flag.
 
 ## Solution:
-I opened the file with my image viewer and get the error "bmp image has unsupported header size".
+- I opened the file with my image viewer and get the error "bmp image has unsupported header size".
+- I then opened it with sublime text and saw the header had a hex as "bad0" in the size data. After some digging, I changed it to 2800 and got an openable image but no flag.
+- Then I changed the width data a bit but that result in a weird image, still no flag.
+- Changing the height data finally from 3201 to 3203 revealed the flag.
+  <img width="2554" height="1834" alt="image" src="https://github.com/user-attachments/assets/3a14cfd6-7566-4164-b001-2abd672eee51" />
 
-```
-put codes & terminal outputs here using triple backticks
-
-you may also use ```python for python codes for example
-```
 
 ## Flag:
 
 ```
-picoCTF{}
+picoCTF{qu1t3_a_v13w_2020}
 ```
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- Image hex manipulation
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- Fun challenge, learnt about the standard hex data for a BMP file.
 
 ## Resources:
-
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
+- Learnt about BMP hex data [here.](https://www.donwalizerjr.com/understanding-bmp/)
 
 <br><br><br>
 ***
