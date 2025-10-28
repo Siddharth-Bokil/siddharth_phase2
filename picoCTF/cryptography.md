@@ -56,7 +56,11 @@ picoCTF{su((3ss_(r@ck1ng_r3@_24bcbc66}
 ## Resources:
 
 - Found out about the property [here.](https://crypto.stackexchange.com/questions/24880/how-multiplicative-property-of-rsa-can-be-exploited)
-- 
+- Learnt about the RSA algo on [its wiki.](https://en.wikipedia.org/wiki/RSA_cryptosystem)
+- Found out about the hex to ascii conversion [here.](https://www.w3schools.com/python/ref_func_bytes.asp)
+  
+
+
 <br><br><br>
 ***
 <br><br><br>
