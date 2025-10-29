@@ -39,34 +39,41 @@ nite{100010011000}
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
-
+- Ran `strings digital-x.bin` on every file and found the same output in each other than digital-3.bin which had some additional stuff that didn't make sense.
 ```
-put codes & terminal outputs here using triple backticks
-
-you may also use ```python for python codes for example
+sid@sidsAsusZenbook:~/cryptoTP/iLikeLogic$ strings digital-0.bin 
+<SALEAE>
+WAAF
+sid@sidsAsusZenbook:~/cryptoTP/iLikeLogic$ 
 ```
+- Searched about SALEAE and found a software of theirs called 'Logic 2', installed it.
+- On opening the given .sal file in Logic 2, I started adding each analyser till I got something readable. Luckily the right one, Async Serial, was the second analyser.
+- I selected the Input channel as 3 as it was the only one showing something significant and I got story-type text in the Data box.
+- I found the flag hidden between the lines of the story.
+
+<img width="3830" height="2195" alt="image" src="https://github.com/user-attachments/assets/89afc657-eccd-474d-911f-ce42b7322505" />
+
+
 
 ## Flag:
 
 ```
-picoCTF{}
+FCSC{b1dee4eeadf6c4e60aeb142b0b486344e64b12b40d1046de95c89ba5e23a9925}
 ```
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- Logic 2 Capture
+- Async Serial
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- Went in a lot of different direction with this one. Tried to find stuff in the json file, tried to convert the binary in the .bin files to get something readable, then learning a bit about SALEAE helped get to the flag. I didn't think this was the final flag since it doesn't have anything readable inside the {} which is something that was there in the previous challenge.
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
+- [This](https://discuss.saleae.com/t/logic-2-capture-format-sal/1858) guided me to downloading the software.
+- Learnt the basics of Logic 2 [here.](https://www.youtube.com/watch?v=Ak9R4yxQPhs)
 
 <br><br><br>
 ***
