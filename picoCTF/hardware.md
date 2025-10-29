@@ -53,8 +53,6 @@ sid@sidsAsusZenbook:~/cryptoTP/iLikeLogic$
 
 <img width="3830" height="2195" alt="image" src="https://github.com/user-attachments/assets/89afc657-eccd-474d-911f-ce42b7322505" />
 
-
-
 ## Flag:
 
 ```
@@ -74,6 +72,8 @@ FCSC{b1dee4eeadf6c4e60aeb142b0b486344e64b12b40d1046de95c89ba5e23a9925}
 
 - [This](https://discuss.saleae.com/t/logic-2-capture-format-sal/1858) guided me to downloading the software.
 - Learnt the basics of Logic 2 [here.](https://www.youtube.com/watch?v=Ak9R4yxQPhs)
+
+
 
 <br><br><br>
 ***
