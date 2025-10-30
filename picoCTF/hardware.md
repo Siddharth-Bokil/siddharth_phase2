@@ -111,9 +111,7 @@ FCSC{b1dee4eeadf6c4e60aeb142b0b486344e64b12b40d1046de95c89ba5e23a9925}
          }
   ```
 - Then, I went to the memory location `0x68`, took a few bytes from there and converted to ascii but nothing meaningful showed up.
-- After some more digging, I went to the memory map and saw .data starting at `0100`.
-- Then using 68 as an offset, I took a few bytes from there and converted to ASCII.
-- This was the hex from `0x0168`,
+- Then I went to `0x0068` and found the hex there as
   ```
   f1 e3 e6 e6 f1 e3 de f1 cd 94 d6 fa 94 d6 fa d6 ca c8 96 fa d6 94 c8 d5 c9 96 fa 91 d7 c1 d0 94 cb ca fa c3 94 d7 c8 d2 91 d7 c0 d8
   ```
@@ -134,7 +132,7 @@ TFCCTF{Th1s_1s_som3_s1mpl3_4rdu1no_f1rmw4re}
 
 - Ghidra
 - XOR
-- Data byte offsets
+- Data byte locations
 
 ## Notes:
 
