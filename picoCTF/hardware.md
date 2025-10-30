@@ -86,30 +86,25 @@ FCSC{b1dee4eeadf6c4e60aeb142b0b486344e64b12b40d1046de95c89ba5e23a9925}
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
-
-```
-put codes & terminal outputs here using triple backticks
-
-you may also use ```python for python codes for example
-```
+- Initally I ran the `file` command to understand a bit more about the .elf file.
+- I then tried to decompile using `avr-gdb` but that supposedly does not support the architecture of the given file. I had come across another decompiling software, `Ghidra`, in Citadel CTF and hence opened the file in it.
+- It took me a while to fully familiarize myself with Ghidra but after a while I was comfortable with it. I opened the main function from the symbol tree and opened the decompiled version which looked similar to C with weird variable names.
 
 ## Flag:
 
 ```
-picoCTF{}
+TFCCTF{Th1s_1s_som3_s1mpl3_4rdu1no_f1rmw4re}
 ```
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- Ghidra
+- XOR
+- Data byte offsets
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- Probably the toughest challenge. Getting to the main funciton was do-able, but reading and understanding it was the actual task. This took a lot of time, but in hindsight I could've probably done it quicker. I had already tried reading the main function before getting the hint, but I did not go into much depth. After getting the hint I knew thee main function was the right path and hence eventually got the flag.
 
 ## Resources:
 
