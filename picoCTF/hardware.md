@@ -138,7 +138,7 @@ TFCCTF{Th1s_1s_som3_s1mpl3_4rdu1no_f1rmw4re}
 
 ## Notes:
 
-- Probably the toughest challenge. Getting to the main funciton was do-able, but reading and understanding it was the actual task. This took a lot of time, but in hindsight I could've probably done it quicker. I had already tried reading the main function before getting the hint, but I did not go into much depth. After getting the hint I knew the main function was the right path and hence eventually got the flag but I still don't see how the name or the anime would connect to the solution.
+- Probably the toughest challenge. Getting to the main funciton was do-able, but reading and understanding the main function and the memory addresses was the actual task. This took a lot of time, but in hindsight I could've probably done it quicker. I had already tried reading the main function before getting the hint, but I did not go into much depth. After getting the hint I knew the main function was the right path and hence eventually got the flag but I still don't see how the name or the anime would connect to the solution.
 
 ## Resources:
 
