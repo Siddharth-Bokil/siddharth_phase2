@@ -26,7 +26,7 @@ nite{100010011000}
 
 ## Resources:
 
-- Decimal to Binary [convertor](https://www.rapidtables.com/convert/number/decimal-to-binary.html)
+- Decimal to Binary convertor [here.](https://www.rapidtables.com/convert/number/decimal-to-binary.html)
   
 <br><br><br>
 ***
