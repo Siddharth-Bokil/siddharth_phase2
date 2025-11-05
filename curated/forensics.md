@@ -6,39 +6,43 @@
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
+- Ran stegseek on the image to get the flag.
 
-```
-put codes & terminal outputs here using triple backticks
+```bash
+sid@sidsAsusZenbook:~/cryptoTP/curated/hideAndSeek$ stegseek sakamoto.jpg rockyou.txt 
+StegSeek 0.6 - https://github.com/RickdeJager/StegSeek
 
-you may also use ```python for python codes for example
+[i] Found passphrase: "iloveyou1"
+[i] Original filename: "flag.txt".
+[i] Extracting to "sakamoto.jpg.out".
+
+sid@sidsAsusZenbook:~/cryptoTP/curated/hideAndSeek$ cat sakamoto.jpg.out 
+nite{h1d3_4nd_s33k_but_w1th_st3g_sdfu9s8}
+sid@sidsAsusZenbook:~/cryptoTP/curated/hideAndSeek$ 
 ```
 
 
 ## Flag:
 
 ```
-
+nite{h1d3_4nd_s33k_but_w1th_st3g_sdfu9s8}
 ```
 
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- Stegseek
 
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- The challenge was pretty straightforward, since stegseek is literally mentioned in the description.
 
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-- 
+- Stegseek man page
+- SecLists installation for rockyou.txt (here.)[https://github.com/danielmiessler/SecLists]
 
 
 
