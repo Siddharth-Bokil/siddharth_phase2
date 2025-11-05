@@ -118,39 +118,53 @@ nite{n0w_y0u_kn0w_ab0ut_PNG_chunk5}
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
-
+- Opened the pcap in wireshark
+- On going to Statistics-->Conversations, I found a bunch of packets out of which the TCP ones had readable english.
+- It was a conversation between 2 philosophers, it went as -
 ```
-put codes & terminal outputs here using triple backticks
+Camus: One must imagine Sisyphus happy but are we happy ?
+Nietzsche: You will be happy after reading my latest work
+Camus: whats the password ?
+Nietzsche: b3y0ndG00dand3vil
+Camus: thanks
+```
+- Along with this I found a file that had the header of a RAR file, relating to the name of challenge. I then downloaded that file as a raw `.bin` file and used unrar to extract and find the flag, using `b3y0ndG00dand3vil` as the password.
+```
+sid@sidsAsusZenbook:~/cryptoTP/curated/RARofTheAbyss$ unrar x output.bin
+UNRAR 7.00 freeware      Copyright (c) 1993-2024 Alexander Roshal
+Enter password (will not be echoed) for output.bin: 
 
-you may also use ```python for python codes for example
+Extracting from output.bin
+Extracting  flag.txt                                                  OK 
+All OK
+sid@sidsAsusZenbook:~/cryptoTP/curated/RARofTheAbyss$ 
+
 ```
 
 
 ## Flag:
 
 ```
-
+nite{thus_sp0k3_th3_n3tw0rk_f0r3ns1cs_4n4lyst}
 ```
 
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
-
+- Conversations in Wireshark
+- RAR file headers
+- tcpflow (mentioned in notes)
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- I initally tried exporting objects but didnt find anything. Later on I stumbled upon a part of the conversation which didnt have the password for the rar file. I only saw the part `you will be happy after you read my latest book` so for about an hour I was trying all sorts of words relating to Nietzsche and his latest book to extract the flag. I even tried to crack it using rockyou.txt. Eventually I realised just guessing could not be the answer and went back to wireshark to play with it a bit more and found the entire conversation which had the password. Later on after the challenge, I found this tool called `tcpflow` which would've basically done the wireshark part for me from the cli itself.
 
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-- 
+- Came across the conversations (here.)[https://www.wireshark.org/docs/man-pages/wireshark.html]
+- unrar man page
+- Learnt about tcpflow (here.)[https://www.tecmint.com/tcpflow-analyze-debug-network-traffic-in-linux/]
 
 
 
