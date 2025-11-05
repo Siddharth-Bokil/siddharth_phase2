@@ -77,7 +77,7 @@ sid@sidsAsusZenbook:~/cryptoTP/curated/nutrelaChunks$ xxd nutrela.png | less
 00000020: b300 0837 ed49 4441 5478 9cec bd79 2055  ...7.IDATx...y U
 
 ```
-<img width="982" height="1002" alt="image" src="https://github.com/user-attachments/assets/1715267a-8e60-428d-a31b-4323947817d1"/>
+<img width="429" height="421" alt="image" src="https://github.com/user-attachments/assets/3f5598a5-8c03-42ea-bff3-d17c4bf3e478" />
 
 ## Flag:
 
