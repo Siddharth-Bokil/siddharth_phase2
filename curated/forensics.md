@@ -93,7 +93,7 @@ you may also use ```python for python codes for example
 
 
 
-<br><br<br>
+<br><br><br>
 ***
 <br><br><br>
 
@@ -195,7 +195,7 @@ you may also use ```python for python codes for example
 
 
 
-<br><br<br>
+<br><br><br>
 ***
 <br><br><br>
 
