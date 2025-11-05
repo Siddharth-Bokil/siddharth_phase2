@@ -89,7 +89,7 @@ nite{n0w_y0u_kn0w_ab0ut_PNG_chunk5}
 ## Concepts learnt:
 
 - Magic numbers
-- PNG chunks(IDHR/IDAT/IEND)
+- PNG chunks(IHDR/IDAT/IEND)
 
 
 ## Notes:
