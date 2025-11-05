@@ -61,40 +61,47 @@ nite{h1d3_4nd_s33k_but_w1th_st3g_sdfu9s8}
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
+- Tried to open the file, that didn't work.
+- Read its magic numbers and changed it to standard ones for PNGs.
+- Took me some time, but I was browsing the website on PNG chunks I realised there was a difference in upper and lower case in the human-readable part. 
+```
+sid@sidsAsusZenbook:~/cryptoTP/curated/nutrelaChunks$ xxd nutrela.png | les
+00000000: 8970 6e67 0d0a 1a0a 0000 000d 6968 6472  .png........ihdr
+00000010: 0000 03e8 0000 03e8 0802 0000 00c2 c143  ...............C
+00000020: b300 0837 ed69 6461 7478 9cec bd79 2055  ...7.idatx...y U
+00000030: db1f f7bf 1d8e cc84 084d 6e33 4952 48ba  .........Mn3IRH.
+sid@sidsAsusZenbook:~/cryptoTP/curated/nutrelaChunks$ hexedit nutrela.png
+sid@sidsAsusZenbook:~/cryptoTP/curated/nutrelaChunks$ xxd nutrela.png | less
+00000000: 8950 4e47 0d0a 1a0a 0000 000d 4948 4452  .PNG........IHDR
+00000010: 0000 03e8 0000 03e8 0802 0000 00c2 c143  ...............C
+00000020: b300 0837 ed49 4441 5478 9cec bd79 2055  ...7.IDATx...y U
 
 ```
-put codes & terminal outputs here using triple backticks
-
-you may also use ```python for python codes for example
-```
+<img width="982" height="1002" alt="image" src="https://github.com/user-attachments/assets/1715267a-8e60-428d-a31b-4323947817d1" />
 
 
 ## Flag:
 
 ```
-
+nite{n0w_y0u_kn0w_ab0ut_PNG_chunk5}
 ```
 
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- Magic numbers
+- PNG chunks(IDHR/IDAT/IEND)
 
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- Nice challenge. Initally I just changed the magic numbers, but then later saw that the `IHDR` and `IDAT` chunks were in lowercase.
 
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-- 
-
+- Found common file signatures [here.](https://en.wikipedia.org/wiki/List_of_file_signatures)
+- Used [this](https://medium.com/@0xwan/png-structure-for-beginner-8363ce2a9f73) to learn about chunks and their hex representation.
 
 
 
