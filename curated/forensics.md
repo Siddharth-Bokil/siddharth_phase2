@@ -162,9 +162,9 @@ nite{thus_sp0k3_th3_n3tw0rk_f0r3ns1cs_4n4lyst}
 
 ## Resources:
 
-- Came across the conversations (here.)[https://www.wireshark.org/docs/man-pages/wireshark.html]
+- Came across the conversations [here.](https://www.wireshark.org/docs/man-pages/wireshark.html)
 - unrar man page
-- Learnt about tcpflow (here.)[https://www.tecmint.com/tcpflow-analyze-debug-network-traffic-in-linux/]
+- Learnt about tcpflow [here.](https://www.tecmint.com/tcpflow-analyze-debug-network-traffic-in-linux/)
 
 
 
