@@ -42,7 +42,7 @@ nite{h1d3_4nd_s33k_but_w1th_st3g_sdfu9s8}
 ## Resources:
 
 - Stegseek man page
-- SecLists installation for rockyou.txt (here.)[https://github.com/danielmiessler/SecLists]
+- SecLists installation for rockyou.txt [here.](https://github.com/danielmiessler/SecLists)
 
 
 
