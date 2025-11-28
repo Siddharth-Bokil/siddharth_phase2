@@ -183,39 +183,40 @@ nite{thus_sp0k3_th3_n3tw0rk_f0r3ns1cs_4n4lyst}
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
+- I extracted the ad1 file from the given rar file, but could not find much support for an ad1 file on my linux system.
+- I then booted into Windows, opened the file in FTK Imager. On messing with the file tree I found `logins.json` and `key4.db` in `GIC2024/AppData/Roaming/Mozilla/Firefox/Profiles/j4gjesg4.default-release` confirming the name given in the hint.
+- Then I installed the `firefox_decrypt` package from github and ran it.
+- Doing that revealed the flag.
 
 ```
-put codes & terminal outputs here using triple backticks
-
-you may also use ```python for python codes for example
+python "C:\Users\Siddharth\OneDrive\Desktop\firefox_ctf\firefox_decrypt.py" -d "C:\Users\Siddharth\OneDrive\Desktop\firefox_ctf"
 ```
+<img width="720" height="621" alt="image" src="https://github.com/user-attachments/assets/8517394c-7e1f-4154-845f-9a7413e6eb1a" />
 
 
 ## Flag:
 
 ```
-
+GCTF{m0zarella_f1ref0x_p4ssw0rd}
 ```
 
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- ad1 files, memory forensics
+- FTK Imager
+- Firefox password decryption
 
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- It took me a while because I was trying to open up the ad1 on linux for a long time but nothing worked. I tried ewf-tools, autopsy and finally I realised I could've used wine all along. Anyways doing it in windows was quite quick. Fun challenge.
 
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-- 
+- Used [this](https://www.youtube.com/watch?v=CPup3ClC7nE) video as a guide for FTK Imager.
+- FOllowed [this](https://dev.to/higordiego/cracking-firefox-encryption-and-rescuing-saved-passwords-pfl) to find the right file path.
 
 
 
