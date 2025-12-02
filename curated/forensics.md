@@ -239,16 +239,86 @@ GCTF{m0zarella_f1ref0x_p4ssw0rd}
 - You **must** include images such as screenshots wherever relevant.
 
 ```
-put codes & terminal outputs here using triple backticks
+------------------------STAGE 1--------------------------
+vol@03ca48285010:/data$ python2 volatility/vol.py kdbgscan -f MemoryDump_Lab1.raw 
+Volatility Foundation Volatility Framework 2.6.1
+**************************************************
+Instantiating KDBG using: /data/MemoryDump_Lab1.raw WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x28100a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win7SP1x64
+PsActiveProcessHead           : 0x2846b90
+PsLoadedModuleList            : 0x2864e90
+KernelBase                    : 0xfffff8000261f000
 
-you may also use ```python for python codes for example
+vol@03ca48285010:/data$ python2 volatility/vol.py -f MemoryDump_Lab1.raw --profile=Win7SP1x64 pslist
+....
+vol@03ca48285010:/data$ python2 volatility/vol.py -f MemoryDump_Lab1.raw --profile=Win7SP1x64 consoles -p 1984
+...
+ZmxhZ3t0aDFzXzFzX3RoM18xc3Rfc3Q0ZzMhIX0=
+...
+vol@03ca48285010:/data$ echo 'ZmxhZ3t0aDFzXzFzX3RoM18xc3Rfc3Q0ZzMhIX0=' | base64 -d
+flag{th1s_1s_th3_1st_st4g3!!}
+
+
+------------------------STAGE 2--------------------------
+vol@5711d5656df0:/volatility$ python2 vol.py -f /data/MemoryDump_Lab1.raw --profile=Win7SP1x64 memdump -p 2424 -D .
+Volatility Foundation Volatility Framework 2.6.1
+************************************************************************
+Writing mspaint.exe [  2424] to 2424.dmp
+sid@sidsAsusZenbook:~/cryptoTP/curated/reDraw$ sudo docker cp 5711d5656df0:/volatility/2424.dmp .
+Successfully copied 266MB to /home/sid/cryptoTP/curated/reDraw/.
+sid@sidsAsusZenbook:~/cryptoTP/curated/reDraw$ file 2424.dmp
+2424.dmp: data
+sid@sidsAsusZenbook:~/cryptoTP/curated/reDraw$ mv 2424.dmp 2424.data
+sid@sidsAsusZenbook:~/cryptoTP/curated/reDraw$ gimp 2424.data
+sid@sidsAsusZenbook:~/cryptoTP/curated/reDraw$ hexedit 2424.data
+
+
+------------------------STAGE 3--------------------------
+vol@81f895bfcf44:/data$ python2 volatility/vol.py -f MemoryDump_Lab1.raw --profile=Win7SP1x64 cmdline -p 1512
+Volatility Foundation Volatility Framework 2.6.1
+************************************************************************
+WinRAR.exe pid:   1512
+Command line : "C:\Program Files\WinRAR\WinRAR.exe" "C:\Users\Alissa Simpson\Documents\Important.rar"
+vol@81f895bfcf44:/data$ python2 volatility/vol.py -f MemoryDump_Lab1.raw --profile=Win7SP1x64 filescan | grep Important.rar
+Volatility Foundation Volatility Framework 2.6.1
+0x000000003fa3ebc0      1      0 R--r-- \Device\HarddiskVolume2\Users\Alissa Simpson\Documents\Important.rar
+0x000000003fac3bc0      1      0 R--r-- \Device\HarddiskVolume2\Users\Alissa Simpson\Documents\Important.rar
+0x000000003fb48bc0      1      0 R--r-- \Device\HarddiskVolume2\Users\Alissa Simpson\Documents\Important.rar
+vol@5711d5656df0:/volatility$ python2 vol.py -f /data/MemoryDump_Lab1.raw --profile=Win7SP1x64 dumpfiles -Q 0x000000003fa3ebc0 -D ./outputDirectory/
+Volatility Foundation Volatility Framework 2.6.1
+DataSectionObject 0x3fa3ebc0   None   \Device\HarddiskVolume2\Users\Alissa Simpson\Documents\Important.rar
+vol@5711d5656df0:/volatility$ ls outputDirectory/
+file.None.0xfffffa8001034450.dat
+vol@5711d5656df0:/volatility$ cd outputDirectory/
+vol@5711d5656df0:/volatility/outputDirectory$ file file.None.0xfffffa8001034450.dat 
+file.None.0xfffffa8001034450.dat: RAR archive data, v5
+vol@5711d5656df0:/volatility/outputDirectory$ mv file.None.0xfffffa8001034450.rar /data/file.rar
+sid@sidsAsusZenbook:~/cryptoTP/curated/reDraw$ sudo docker cp 5711d5656df0:/volatility/outputDirectory/file.None.0xfffffa8001034450.rar .
+[sudo] password for sid: 
+Successfully copied 46.6kB to /home/sid/cryptoTP/curated/reDraw/.
+sid@sidsAsusZenbook:~/cryptoTP/curated/reDraw$ unrar e file.None.0xfffffa8001034450.rar 
+UNRAR 7.11 beta 1 freeware      Copyright (c) 1993-2025 Alexander Roshal
+Archive comment:
+Password is NTLM hash(in uppercase) of Alissa's account passwd.
+Extracting from file.None.0xfffffa8001034450.rar
+Enter password (will not be echoed) for flag3.png: 
+Extracting  flag3.png                                                 OK 
+All OK
+sid@sidsAsusZenbook:~/cryptoTP/curated/reDraw$
 ```
+
+<img width="976" height="439" alt="image" src="https://github.com/user-attachments/assets/46bd6cee-f705-4dd9-83eb-fd8b6c0dbbda" />
+<img width="489" height="495" alt="image" src="https://github.com/user-attachments/assets/96981fbe-e5da-4ce6-82fc-8b45686344dd" />
 
 
 ## Flag:
 
 ```
-
+flag{th1s_1s_th3_1st_st4g3!!}
+flag{Good_Boy_good_girl}
+flag{w3ll_3rd_stage_was_easy}
 ```
 
 
