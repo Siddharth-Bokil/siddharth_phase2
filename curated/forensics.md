@@ -235,10 +235,18 @@ GCTF{m0zarella_f1ref0x_p4ssw0rd}
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
+- Extracted the given `.7z` file to get a memory dump in the form of a `.raw` file.
+- Ran a kdbgscan on the .raw file and it was a Win7SP1x64 profile file.
+- Using pslist showed 3 main processes, winRAR, mspaint, and cmd.
+- Running consoles on the cmd process revealed a base64 encoded string which was the flag for stage 1.
+- Using memdump on the winRAR process I obtained a .dmp file which I later converted to a .data file so I could open it using GIMP.
+- To find the offset, I checked the hex of the file and found repeating `FF FF FF FF` units which indicated that it was an RGBA type of image. The byte position of the first `FF FF FF FF` block is the offset and I found it to be `276`. On playing with the height filter, I found `1230` revealed some inverted text which was the flag for stgae 2.
+- For the 3rd stage, I found a `.rar` file was being provided as an argument to winRAR.
+- To unrar this file I needed an NTLM hash of the owner's password. Upon learnning of the structer of these hashes, I was able to find the NTLM hash of the owner via the hashdump command.
+- The flag for the 3rd stage was in the `.png` obtained on unrar-ing the file.
 
 ```
+sid@sidsAsusZenbook:~/cryptoTP/curated/reDraw$ 7za x Re_Draw.7z
 ------------------------STAGE 1--------------------------
 vol@03ca48285010:/data$ python2 volatility/vol.py kdbgscan -f MemoryDump_Lab1.raw 
 Volatility Foundation Volatility Framework 2.6.1
@@ -298,6 +306,13 @@ vol@5711d5656df0:/volatility/outputDirectory$ mv file.None.0xfffffa8001034450.ra
 sid@sidsAsusZenbook:~/cryptoTP/curated/reDraw$ sudo docker cp 5711d5656df0:/volatility/outputDirectory/file.None.0xfffffa8001034450.rar .
 [sudo] password for sid: 
 Successfully copied 46.6kB to /home/sid/cryptoTP/curated/reDraw/.
+vol@5711d5656df0:/volatility$ python2 vol.py -f /data/MemoryDump_Lab1.raw --profile=Win7SP1x64 hashdump     
+Volatility Foundation Volatility Framework 2.6.1
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SmartNet:1001:aad3b435b51404eeaad3b435b51404ee:4943abb39473a6f32c11301f4987e7e0:::
+HomeGroupUser$:1002:aad3b435b51404eeaad3b435b51404ee:f0fc3d257814e08fea06e63c5762ebd5:::
+Alissa Simpson:1003:aad3b435b51404eeaad3b435b51404ee:f4ff64c8baac57d22f22edc681055ba6:::
 sid@sidsAsusZenbook:~/cryptoTP/curated/reDraw$ unrar e file.None.0xfffffa8001034450.rar 
 UNRAR 7.11 beta 1 freeware      Copyright (c) 1993-2025 Alexander Roshal
 Archive comment:
@@ -330,8 +345,7 @@ flag{w3ll_3rd_stage_was_easy}
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- This was a really long challenge and had a lot to learn. It was quite fun learning about the various plugins of volatility but their github page came in handy. I had some issues installing volatility properly since I had python3 and not python2.7 which volatility2 needs so I ended up doing the challenge on docker instead. The 2nd stage in my opinion was quite tough compared to the other 2 because it had that image-based forensics thing as well.
 
 
 ## Resources:
