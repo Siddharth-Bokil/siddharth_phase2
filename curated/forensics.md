@@ -325,6 +325,7 @@ sid@sidsAsusZenbook:~/cryptoTP/curated/reDraw$
 ```
 
 <img width="976" height="439" alt="image" src="https://github.com/user-attachments/assets/46bd6cee-f705-4dd9-83eb-fd8b6c0dbbda" />
+
 <img width="489" height="495" alt="image" src="https://github.com/user-attachments/assets/96981fbe-e5da-4ce6-82fc-8b45686344dd" />
 
 
@@ -339,8 +340,9 @@ flag{w3ll_3rd_stage_was_easy}
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- `FF FF FF FF` repeating pattern signifies alpha. Position of first alpha unit is file offset
+- Volatility 2 - Based on python2, used for analysis memory dumps, has various plugins(commands) was various purposes
+- NTLM hashes - ONe way encryption for windows
 
 
 ## Notes:
@@ -350,6 +352,7 @@ flag{w3ll_3rd_stage_was_easy}
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-- 
+- Volatility 2 official github [repo](https://github.com/volatilityfoundation/volatility)
+- pwdump [structure](https://grokipedia.com/page/Pwdump) for NTLM hash
+- Used [this](https://hacks4geeks.com/plugins-de-volatility-2/) for volatility plugins
 
