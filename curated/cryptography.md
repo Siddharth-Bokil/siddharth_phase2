@@ -132,19 +132,19 @@ nite{1mp0r7_m0dul3?_1_4M_7h3_m0dul3}
 ## Concepts learnt:
 
 - Block ciphers - Similar to matirx multiplications and linear trnansformations
-- 
+- Finding coefficients from given input and corresponding output
 
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+- Really had to dig through the book pdfs to find some help. I was doing it right but I did not swap the 2 values otherwise would've finished it much quicker.
 
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-- 
+- [Intro to crypto](file:///home/sid/Downloads/An%20Introduction%20to%20Mathematical%20Cryptography%20%5BHoffstein-Pipher-Silverman%5D%20(2014).pdf)
+- [Serious cryptography](https://www.kea.nu/files/textbooks/humblesec/seriouscrytography.pdf)
+- Python functions [here](https://www.geeksforgeeks.org/python/python-os-urandom-method/)
 
 
 
