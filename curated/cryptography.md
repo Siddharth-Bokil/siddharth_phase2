@@ -1,6 +1,6 @@
 # 1. All Signs Align
 
-> -
+> *None*
 
 
 ## Solution:
@@ -51,8 +51,7 @@ you may also use ```python for python codes for example
 
 # 2. Residue Refinery
 
-> -
-
+> *None*
 
 ## Solution:
 
@@ -102,7 +101,7 @@ you may also use ```python for python codes for example
 
 # 3. Quixorte
 
-> -
+> *None*
 
 
 ## Solution:
@@ -153,7 +152,7 @@ you may also use ```python for python codes for example
 
 # 4. Willy's Chocolate Experience
 
-> -
+> *None*
 
 
 ## Solution:
@@ -204,7 +203,7 @@ you may also use ```python for python codes for example
 
 # 5. spAES Oddity
 
-> -
+> *None*
 
 
 ## Solution:
