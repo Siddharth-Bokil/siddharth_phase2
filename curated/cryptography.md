@@ -65,8 +65,8 @@ nite{r3s1du35_f4ll1ng_1nt0_pl4c3}
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-- 
+- An introduction to mathematical cryptography [here](file:///home/sid/Downloads/An%20Introduction%20to%20Mathematical%20Cryptography%20%5BHoffstein-Pipher-Silverman%5D%20(2014).pdf)
+- Serious cryptography [here](https://www.kea.nu/files/textbooks/humblesec/seriouscrytography.pdf)
 
 
 
@@ -84,26 +84,54 @@ nite{r3s1du35_f4ll1ng_1nt0_pl4c3}
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
+- The multiplication part of `class Num` suggested it is like a linear transformation.
+- The byte order is reversed for every 2 bytes so I had to simply reverse the bytes everytime.
+- Since we already had the ciphertext for the first 2 values of plaintext, it was quite mathematical to figure out the coefficient matrix in the linear transformation.
+- Once the coefficient matrix was found, it could be applied to reverse every other ciphertext and the plaintext in readable english was the flag.
 
 ```
-put codes & terminal outputs here using triple backticks
+p = 257
+ct_hex = "9813d3838178abd17836f3e2e752a99d5cd3fba291205f90c1d0a78b6eca"
+ct = bytes.fromhex(ct_hex)
+x1, x2 = 0x31, 0x6d
 
-you may also use ```python for python codes for example
+def modinv(a, m):
+    return pow(a, -1, m)
+
+a = x1
+b = x2
+C2_init, C1_init = ct[0], ct[1]
+
+det = (a*a - 3*b*b) % p
+inv_det = modinv(det, p)
+k1 = (inv_det * ((a*C1_init - 3*b*C2_init) % p)) % p
+k2 = (inv_det * ((-b*C1_init + a*C2_init) % p)) % p
+
+coeffA, coeffB, coeffC, coeffD = k1, (3*k2) % p, k2, k1
+detA = (coeffA * coeffD - coeffB * coeffC) % p
+invA = modinv(detA, p)
+
+plain = bytearray()
+for i in range(0, len(ct), 2):
+    C2, C1 = ct[i], ct[i+1]
+    f0 = (invA * ((coeffD * C1 - coeffB * C2) % p)) % p
+    f1 = (invA * ((-coeffC * C1 + coeffA * C2) % p)) % p
+    plain.extend([f0, f1])
+
+print(plain.decode())
 ```
 
 
 ## Flag:
 
 ```
-
+nite{1mp0r7_m0dul3?_1_4M_7h3_m0dul3}
 ```
 
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
+- Block ciphers - Similar to matirx multiplications and linear trnansformations
 - 
 
 
