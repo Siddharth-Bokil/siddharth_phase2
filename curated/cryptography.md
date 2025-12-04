@@ -167,9 +167,41 @@ nite{1mp0r7_m0dul3?_1_4M_7h3_m0dul3}
 - You **must** include images such as screenshots wherever relevant.
 
 ```
-put codes & terminal outputs here using triple backticks
+png = bytes([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A])
 
-you may also use ```python for python codes for example
+with open("quote.png.enc", "rb") as f:
+    enc = f.read(8)
+    
+def ror(b, i):
+    s = i % 8
+    return ((b >> s) | (b << (8 - s)) & 0xFF) & 0xFF
+
+rot = bytes(ror(png[i], i) for i in range(8))
+S = [enc[i] ^ rot[i] for i in range(8)]
+
+key = [S[0]]
+for i in range(1, 8):
+    key.append(S[i] ^ S[i-1])
+
+print("Recovered key (hex):", bytes(key).hex())
+```
+
+```
+key = bytes.fromhex("ec95e0220a3d5ab7")
+enc = bytearray(open("quote.png.enc", "rb").read())
+
+def rol(b, i):
+    s = i % 8
+    return ((b << s) & 0xFF) | (b >> (8 - s))
+
+for i in reversed(range(len(enc) - len(key) + 1)): # Undo XOR
+    for j in range(len(key)):
+        enc[i + j] ^= key[j]
+
+flag = bytearray(rol(enc[i], i) for i in range(len(enc))) # Undo Rotation
+
+image = open("quote.png", "wb")
+image.write(flag)
 ```
 <img width="457" height="450" alt="image" src="https://github.com/user-attachments/assets/83784fd4-8d41-457d-a671-427ebc672c89" />
 
@@ -183,9 +215,12 @@ nite{t0_b3_X0R_n0t_t0_b3333}
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
-
+- Xor Properties -
+      - Plaintext ^ Key = Ciphertext
+      - Ciphertext ^ Key = Plaintext
+      - Plaintext ^ Ciphertext = Key
+- Byte rotation - Left rotate and right rotate
+- Magic numbers
 
 ## Notes:
 
