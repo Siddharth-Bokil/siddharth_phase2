@@ -184,7 +184,7 @@ key = [S[0]]
 for i in range(1, 8):
     key.append(S[i] ^ S[i-1])
 
-print("Recovered key (hex):", bytes(key).hex())
+print(bytes(key).hex())
 ```
 
 - Now that the key is known, we can use the property `ciphertext ^ key = plaintext` to find out the original bytes and hence decrypt the png.
