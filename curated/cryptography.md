@@ -65,7 +65,7 @@ nite{r3s1du35_f4ll1ng_1nt0_pl4c3}
 
 ## Resources:
 
-- An introduction to mathematical cryptography [here](file:///home/sid/Downloads/An%20Introduction%20to%20Mathematical%20Cryptography%20%5BHoffstein-Pipher-Silverman%5D%20(2014).pdf)
+- An introduction to mathematical cryptography [here](https://www.scribd.com/document/906877978/An-Introduction-to-Mathematical-Cryptography-2nd-Edition-Hoffstein)
 - Serious cryptography [here](https://www.kea.nu/files/textbooks/humblesec/seriouscrytography.pdf)
 
 
@@ -142,7 +142,7 @@ nite{1mp0r7_m0dul3?_1_4M_7h3_m0dul3}
 
 ## Resources:
 
-- [Intro to crypto](file:///home/sid/Downloads/An%20Introduction%20to%20Mathematical%20Cryptography%20%5BHoffstein-Pipher-Silverman%5D%20(2014).pdf)
+- [Intro to crypto](https://www.scribd.com/document/906877978/An-Introduction-to-Mathematical-Cryptography-2nd-Edition-Hoffstein)
 - [Serious cryptography](https://www.kea.nu/files/textbooks/humblesec/seriouscrytography.pdf)
 - Python functions [here](https://www.geeksforgeeks.org/python/python-os-urandom-method/)
 
@@ -195,8 +195,8 @@ nite{t0_b3_X0R_n0t_t0_b3333}
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-- 
+- [Intro to crypto](https://www.scribd.com/document/906877978/An-Introduction-to-Mathematical-Cryptography-2nd-Edition-Hoffstein)
+- [Serious cryptography](https://www.kea.nu/files/textbooks/humblesec/seriouscrytography.pdf)
 
 
 
