@@ -171,12 +171,13 @@ put codes & terminal outputs here using triple backticks
 
 you may also use ```python for python codes for example
 ```
+<img width="457" height="450" alt="image" src="https://github.com/user-attachments/assets/83784fd4-8d41-457d-a671-427ebc672c89" />
 
 
 ## Flag:
 
 ```
-
+nite{t0_b3_X0R_n0t_t0_b3333}
 ```
 
 
