@@ -89,7 +89,7 @@ nite{r3s1du35_f4ll1ng_1nt0_pl4c3}
 - Since we already had the ciphertext for the first 2 values of plaintext, it was quite mathematical to figure out the coefficient matrix in the linear transformation.
 - Once the coefficient matrix was found, it could be applied to reverse every other ciphertext and the plaintext in readable english was the flag.
 
-```
+```python
 p = 257
 ct_hex = "9813d3838178abd17836f3e2e752a99d5cd3fba291205f90c1d0a78b6eca"
 ct = bytes.fromhex(ct_hex)
@@ -166,7 +166,7 @@ nite{1mp0r7_m0dul3?_1_4M_7h3_m0dul3}
 - Include as many steps as you can with your thought process
 - You **must** include images such as screenshots wherever relevant.
 
-```
+```python
 png = bytes([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A])
 
 with open("quote.png.enc", "rb") as f:
@@ -186,7 +186,7 @@ for i in range(1, 8):
 print("Recovered key (hex):", bytes(key).hex())
 ```
 
-```
+```python
 key = bytes.fromhex("ec95e0220a3d5ab7")
 enc = bytearray(open("quote.png.enc", "rb").read())
 
