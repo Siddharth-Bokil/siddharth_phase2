@@ -195,6 +195,8 @@ nite{t0_b3_X0R_n0t_t0_b3333}
 
 ## Resources:
 
+- Basic XOR properties [video](https://www.youtube.com/watch?v=xK_SqWG9w-Y)
+- Common file signatures [here](https://en.wikipedia.org/wiki/List_of_file_signatures)
 - [Intro to crypto](https://www.scribd.com/document/906877978/An-Introduction-to-Mathematical-Cryptography-2nd-Edition-Hoffstein)
 - [Serious cryptography](https://www.kea.nu/files/textbooks/humblesec/seriouscrytography.pdf)
 
