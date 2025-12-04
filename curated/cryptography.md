@@ -60,7 +60,7 @@ nite{r3s1du35_f4ll1ng_1nt0_pl4c3}
 
 ## Notes:
 
-- This challenge was more about the math. It took me a long time to solve this challenge but the books provided in the resources are pretty helpful. It was fun to finally see the flag but the challenge is too mathematically technical, don't think I would remember this math after 5 days from now.
+This challenge was more about the math. It took me a long time to solve this challenge but the books provided in the resources are pretty helpful. It was fun to finally see the flag but the challenge is too mathematically technical, don't think I would remember this math after 5 days from now.
 
 
 ## Resources:
@@ -137,7 +137,7 @@ nite{1mp0r7_m0dul3?_1_4M_7h3_m0dul3}
 
 ## Notes:
 
-- Really had to dig through the book pdfs to find some help. I was doing it right but I did not swap the 2 values otherwise would've finished it much quicker.
+Really had to dig through the book pdfs to find some help. I was doing it right but I did not swap the 2 values otherwise would've finished it much quicker.
 
 
 ## Resources:
@@ -163,8 +163,9 @@ nite{1mp0r7_m0dul3?_1_4M_7h3_m0dul3}
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
+- The png file has been encrypted using a sliding XOR along with byte rotation.
+- The png is decryptable since we know the first 8 bytes of a png are always fixed. This allows us to figure out the key and this key is used throughout the entire png and hence can be decrypted.
+- The code for finding the key is given below.
 
 ```python
 png = bytes([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A])
@@ -186,6 +187,9 @@ for i in range(1, 8):
 print("Recovered key (hex):", bytes(key).hex())
 ```
 
+- Now that the key is known, we can use the property `ciphertext ^ key = plaintext` to find out the original bytes and hence decrypt the png.
+- Since the bytes were rotated to the right, rotating to the left after XORing gives us the correct bytes.
+ 
 ```python
 key = bytes.fromhex("ec95e0220a3d5ab7")
 enc = bytearray(open("quote.png.enc", "rb").read())
@@ -224,8 +228,7 @@ nite{t0_b3_X0R_n0t_t0_b3333}
 
 ## Notes:
 
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+Initially I thought the flag was written as text in the png bytes in some way, instead of being written in the image itself. The sliding-window XOR was confusig initially but it felt easier to decrypt than the previous challenge. XOR seems to have a lot of properties that make it a bad method of encryption.
 
 
 ## Resources:
