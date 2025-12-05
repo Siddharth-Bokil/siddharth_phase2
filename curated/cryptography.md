@@ -255,8 +255,11 @@ Initially I thought the flag was written as text in the png bytes in some way, i
 
 ## Solution:
 
-- Include as many steps as you can with your thought process
-- You **must** include images such as screenshots wherever relevant.
+- The challenge converts the flag into a large integer using bytes_to_long. This integer is called the ticket.
+- Since ticket is unknown, the goal is to recover it from two consecutive values of a function `f(m) = 13^m + 37^m (mod p)`
+- We simplify the expression and solve the discrete log problem using Baby Step Giant Step and Pohlig-Hellman algorithms.
+- All the partial results are then combined using the Chinese Remainder Theorem, which gives the unique value of (m-1) inside the group.
+- Adding 1 to this value and converting to bytes gives us the flag.
 
 ```python
 from collections import Counter
@@ -267,7 +270,6 @@ A = 2082712767857114165652700036747192546525678207854590963030841356438661072541
 B = 124499652441066069321544812234595327614165778598236394255418354986873240978090206863399216810942232360879573073405796848165530765886142184827326462551698684564407582751560255175
 g = 37
 
-# x = 37^(m-1) mod p
 x = ((A - 13 * B) * inverse(24, p)) % p
 
 def factorTrial(n, bound=2000000):
@@ -330,25 +332,26 @@ print(long_to_bytes(m).decode())
 ## Flag:
 
 ```
-
+nite{g0ld3n_t1ck3t_t0_gl4sg0w}
 ```
 
 
 ## Concepts learnt:
 
-- Include the new topics you've come across and explain them in brief
-- 
+- Pohlig-Hellman algorithm for computing discrete logs
+- Baby step giant step algorithm for computing discrete logs
+- Chinese remainder theorem
 
 
 ## Notes:
-This challenge took a very long time, almost 2 days and there's a lot of math in this challenge. I had really search through the internet to find different algorithms and piece them together to make the code for recovering the flag. There's still a lot of math used in this challenge that I don't fully understand but it worked so i'm happy. However, this challenge has made me rethink my choice of cryptography as a domain.
+This challenge took a very long time, almost 2 days and there's a lot of math in this challenge. I had really search through the internet to find different algorithms and piece them together to make the code for recovering the flag. The book provided in the resources told me what I needed to do and then I found algorithms till something worked. There's still a lot of math used in this challenge that I don't fully understand but it worked so i'm happy. However, this challenge has made me rethink my choice of cryptography as a domain.
 
 
 ## Resources:
 
-- Include the resources you've referred to with links. [example hyperlink](https://google.com)
-- 
-
+- [Intro to crypto](https://www.scribd.com/document/906877978/An-Introduction-to-Mathematical-Cryptography-2nd-Edition-Hoffstein)
+- BSGS algo [here](https://mvpworkshop.co/baby-step-giant-step-algorithm/)
+- Pohlig-Hellman algo [here](https://github.com/christiankrug/pohlig_hellman/blob/master/main.py)
 
 
 
