@@ -258,10 +258,72 @@ Initially I thought the flag was written as text in the png bytes in some way, i
 - Include as many steps as you can with your thought process
 - You **must** include images such as screenshots wherever relevant.
 
-```
-put codes & terminal outputs here using triple backticks
+```python
+from collections import Counter
+from Crypto.Util.number import inverse, long_to_bytes
 
-you may also use ```python for python codes for example
+p = 396430433566694153228963024068183195900644000015629930982017434859080008533624204265038366113052353086248115602503012179807206251960510130759852727353283868788493357310003786807
+A = 208271276785711416565270003674719254652567820785459096303084135643866107254120926647956533028404502637100461134874329585833364948354858925270600245218260166855547105655294503224
+B = 124499652441066069321544812234595327614165778598236394255418354986873240978090206863399216810942232360879573073405796848165530765886142184827326462551698684564407582751560255175
+g = 37
+
+# x = 37^(m-1) mod p
+x = ((A - 13 * B) * inverse(24, p)) % p
+
+def factorTrial(n, bound=2000000):
+    f = Counter()
+    d = 2
+    while d * d <= n and d <= bound:
+        while n % d == 0:
+            f[d] += 1
+            n //= d
+        d = 3 if d == 2 else d + 2
+    return f, n
+
+def bsgs(base, target, modp, limit):
+    m = int(pow(limit,0.5)) + 1
+    table = {}
+    cur = 1
+    for j in range(m):
+        if cur not in table:
+            table[cur] = j
+        cur = (cur * base) % modp
+
+    step = pow(inverse(base, modp), m, modp)
+    gamma = target
+    for i in range(m + 1):
+        if gamma in table:
+            return (i * m + table[gamma]) % limit
+        gamma = (gamma * step) % modp
+    return None
+
+def hellman(base, target, modp):
+    N = modp - 1
+    facs, rem = factorTrial(N)
+    if rem != 1:
+        facs[int(rem)] += 1
+
+    parts = []
+    for q, e in facs.items():
+        pe = q ** e
+        g0 = pow(base, N // pe, modp)
+        h0 = pow(target, N // pe, modp)
+        t = bsgs(g0, h0, modp, pe)
+        parts.append((t, pe))
+
+    M = 1
+    for _, ni in parts:
+        M *= ni
+
+    xcrt = 0
+    for ai, ni in parts:
+        mi = M // ni
+        xcrt = (xcrt + ai * mi * inverse(mi, ni)) % M
+    return xcrt
+
+k = hellman(g, x, p)
+m = k + 1
+print(long_to_bytes(m).decode())
 ```
 
 
