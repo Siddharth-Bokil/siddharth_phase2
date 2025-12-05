@@ -279,9 +279,7 @@ you may also use ```python for python codes for example
 
 
 ## Notes:
-
-- Include any alternate tangents you went on while solving the challenge, including mistakes & other solutions you found.
-- 
+This challenge took a very long time, almost 2 days and there's a lot of math in this challenge. I had really search through the internet to find different algorithms and piece them together to make the code for recovering the flag. There's still a lot of math used in this challenge that I don't fully understand but it worked so i'm happy. However, this challenge has made me rethink my choice of cryptography as a domain.
 
 
 ## Resources:
