@@ -372,17 +372,175 @@ This challenge took a very long time, almost 2 days and there's a lot of math in
 - Include as many steps as you can with your thought process
 - You **must** include images such as screenshots wherever relevant.
 
-```
-put codes & terminal outputs here using triple backticks
+```python
+from pwn import *
+import string
 
-you may also use ```python for python codes for example
+HOST = "spaesoddity.nitephase.live"
+PORT = 45673
+
+CHARSET = "-" + "_" + "ABCD" + string.ascii_lowercase + "01234"
+BLOCK_SIZE = 16
+FLAG_LEN = 49
+MAX_L = 63
+
+def encrypt_oracle(io, msg):
+    io.recvuntil(b"input in hex:")
+    io.sendline(msg.hex().encode())
+    line = io.recvline().strip()
+    return bytes.fromhex(line.decode())
+
+def pad_len_for_total(total_len):
+    r = total_len % BLOCK_SIZE
+    if r == 0:
+        return BLOCK_SIZE
+    return BLOCK_SIZE - r
+
+def find_plan(known_mask):
+    for L in range(1, MAX_L + 1, 2):
+        total_len = L + FLAG_LEN
+        pad_len = pad_len_for_total(total_len)
+        padded_total = total_len + pad_len
+        nblocks = padded_total // BLOCK_SIZE
+
+        for block_index in range(nblocks):
+            block_start = block_index * BLOCK_SIZE
+            block_end = block_start + BLOCK_SIZE
+
+            layout = []
+            unknown_indices = set()
+
+            for g in range(block_start, block_end):
+                if g < L:
+                    layout.append(("msg", None))
+                elif g < L + FLAG_LEN:
+                    idx = g - L
+                    layout.append(("flag", idx))
+                    if not known_mask[idx]:
+                        unknown_indices.add(idx)
+                else:
+                    layout.append(("pad", None))
+
+            if len(unknown_indices) == 1:
+                return {"type": "single", "L": L, "block_index": block_index, "layout": layout, "unknowns": sorted(unknown_indices)}
+            if len(unknown_indices) == 2:
+                return {"type": "pair", "L": L, "block_index": block_index, "layout": layout, "unknowns": sorted(unknown_indices)}
+
+    return None
+
+def build_template_block(layout, flag_bytes, total_len):
+    pad_len = pad_len_for_total(total_len)
+    template = [0] * BLOCK_SIZE
+    pos_by_idx = {}
+
+    for pos, (kind, val) in enumerate(layout):
+        if kind == "msg":
+            template[pos] = ord("A")
+        elif kind == "pad":
+            template[pos] = pad_len
+        elif kind == "flag":
+            idx = val
+            b = flag_bytes[idx]
+            if b is None:
+                pos_by_idx.setdefault(idx, []).append(pos)
+                template[pos] = 0
+            else:
+                template[pos] = b
+
+    return template, pos_by_idx
+
+def recover_single(io, plan, flag_bytes):
+    L = plan["L"]
+    block_index = plan["block_index"]
+    layout = plan["layout"]
+    k = plan["unknowns"][0]
+
+    base_msg = b"A" * L
+    ct = encrypt_oracle(io, base_msg)
+
+    block_start = block_index * BLOCK_SIZE
+    block_end = block_start + BLOCK_SIZE
+    target_block = ct[block_start:block_end]
+
+    total_len = L + FLAG_LEN
+    template, pos_by_idx = build_template_block(layout, flag_bytes, total_len)
+    unknown_positions = pos_by_idx[k]
+
+    for c in CHARSET:
+        block_bytes = bytearray(template)
+        for pos in unknown_positions:
+            block_bytes[pos] = ord(c)
+        msg_c = bytes(block_bytes) + b"\x00"
+        ct_c = encrypt_oracle(io, msg_c)
+        cand_block = ct_c[:BLOCK_SIZE]
+        if cand_block == target_block:
+            flag_bytes[k] = ord(c)
+            return
+
+def recover_pair(io, plan, flag_bytes):
+    L = plan["L"]
+    block_index = plan["block_index"]
+    layout = plan["layout"]
+    idx1, idx2 = plan["unknowns"]
+
+    base_msg = b"A" * L
+    ct = encrypt_oracle(io, base_msg)
+
+    block_start = block_index * BLOCK_SIZE
+    block_end = block_start + BLOCK_SIZE
+    target_block = ct[block_start:block_end]
+
+    total_len = L + FLAG_LEN
+    template, pos_by_idx = build_template_block(layout, flag_bytes, total_len)
+    pos1 = pos_by_idx[idx1][0]
+    pos2 = pos_by_idx[idx2][0]
+
+    for c1 in CHARSET:
+        for c2 in CHARSET:
+            block_bytes = bytearray(template)
+            block_bytes[pos1] = ord(c1)
+            block_bytes[pos2] = ord(c2)
+            msg_c = bytes(block_bytes) + b"\x00"
+            ct_c = encrypt_oracle(io, msg_c)
+            cand_block = ct_c[:BLOCK_SIZE]
+            if cand_block == target_block:
+                flag_bytes[idx1] = ord(c1)
+                flag_bytes[idx2] = ord(c2)
+                return
+
+io = remote(HOST, PORT)
+
+flag_bytes = [None] * FLAG_LEN
+known = [False] * FLAG_LEN
+
+prefix = b"nite{"
+for i, bch in enumerate(prefix):
+    flag_bytes[i] = bch
+    known[i] = True
+
+flag_bytes[FLAG_LEN - 1] = ord("}")
+known[FLAG_LEN - 1] = True
+
+while not all(known):
+    plan = find_plan(known)
+    if not plan:
+        break
+    if plan["type"] == "single":
+        recover_single(io, plan, flag_bytes)
+    else:
+        recover_pair(io, plan, flag_bytes)
+    for i in range(FLAG_LEN):
+        known[i] = flag_bytes[i] is not None
+
+io.close()
+print("FLAG:", bytes(flag_bytes).decode())
 ```
 
 
 ## Flag:
 
 ```
-
+nite{D4v1d_B0w13-s_0dds_w3r3_n3v3r_1n_y0ur_f4v0r}
 ```
 
 
