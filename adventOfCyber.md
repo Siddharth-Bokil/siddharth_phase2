@@ -4,7 +4,7 @@
 
 
 ## Solution
-- Ran `bash cd Guides/` and then `ls -al`. Found a hidden file and read the flag in it using `cat .guide.txt`.
+- Ran `cd Guides/` and then `ls -al`. Found a hidden file and read the flag in it using `cat .guide.txt`.
 - Ran `find /home/socmas -name *egg*` and then `cat /home/socmas/eggstrike.sh` to get the second flag.
 - Ran `sudo su` to become root and then accessed the bash history using `cat /root/.bash_history` and found the flag there.
 
