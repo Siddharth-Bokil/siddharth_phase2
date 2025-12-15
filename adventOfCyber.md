@@ -39,3 +39,190 @@ None
 
 
 
+
+# 2. Phishing - Merry Clickmas
+
+> Learn how to use the Social-Engineer Toolkit to send phishing emails.
+
+
+## Solution
+Simply followed the instructions given on the side and used `setoolkit` to obtain the password
+
+## Flag
+
+```
+unranked-wisdom-anthem
+```
+
+
+## Concepts learnt
+
+- Social Engineering
+- setoolkit
+
+
+## Notes
+Fun challenge
+
+
+## Resources
+None
+
+
+
+
+<br><br><br>
+***
+<br><br><br>
+
+
+
+
+# Splunk Basics - Did you SIEM?
+
+> Learn how to ingest and parse custom log data using Splunk.
+
+
+## Solution
+- 
+
+## Flag
+
+```
+
+```
+
+
+## Concepts learnt
+
+- 
+
+
+## Notes
+
+
+
+## Resources
+-
+
+
+
+
+<br><br><br>
+***
+<br><br><br>
+
+
+
+
+# Name
+
+> Desc
+
+
+## Solution
+- 
+
+## Flag
+
+```
+
+```
+
+
+## Concepts learnt
+
+- 
+
+
+## Notes
+
+
+
+## Resources
+-
+
+
+
+
+<br><br><br>
+***
+<br><br><br>
+
+
+
+
+# Name
+
+> Desc
+
+
+## Solution
+- 
+
+## Flag
+
+```
+
+```
+
+
+## Concepts learnt
+
+- 
+
+
+## Notes
+
+
+
+## Resources
+-
+
+
+
+
+<br><br><br>
+***
+<br><br><br>
+
+
+
+
+# Name
+
+> Desc
+
+
+## Solution
+- 
+
+## Flag
+
+```
+
+```
+
+
+## Concepts learnt
+
+- 
+
+
+## Notes
+
+
+
+## Resources
+-
+
+
+
+
+<br><br><br>
+***
+<br><br><br>
+
+
+
+
