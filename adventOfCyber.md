@@ -11,7 +11,7 @@
 
 ## Flag
 
-```
+```bash
 THM{learning-linux-cli}
 THM{sir-carrotbane-attacks}
 THM{until-we-meet-again}
