@@ -253,32 +253,43 @@ None
 
 
 
-# Name
+# 5. IDOR - Santa’s Little IDOR
 
-> Desc
+> Learn about IDOR while helping pentest the TrypresentMe website.
 
 
 ## Solution
-- 
+- Loaded up the target page with the following credentials -
+```
+Username:niels
+Password:TryHackMe#2025
+IP address/Website:http://10.48.129.122
+```
+Inspected the page, went to the storage tab > local storage and then brute force the user value from 10, until I found a user with 10 children. This worked with the user `15`.
 
 ## Flag
 
 ```
-
+1: Insecure Direct Object Reference
+2: Horizontal
+3: 15
 ```
 
 
 ## Concepts learnt
 
-- 
+- IDOR
+- Web-Exploitation
+
+
 
 
 ## Notes
-
+None
 
 
 ## Resources
--
+None
 
 
 
