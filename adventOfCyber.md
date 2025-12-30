@@ -301,33 +301,40 @@ None
 
 
 
-# Name
+# 6. Malware Analysis - Egg-xecutable
 
-> Desc
-
+> Discover some common tooling for malware analysis within a sandbox environment.
 
 ## Solution
-- 
+- I Began with the static analysis of the given malware `hophelper.exe`. Loaded the executable into `PeStudio`, clicked on the `indicators` tab in the dropdown and found the SHA256Sum.
+- Next, I clicked on the `strings` indicator on the left pane of `PeStudio`, to find a hidden flag at the bottom, which was `THM{STRINGS_FOUND}`
+-  For the dynamic analysis, on RegShot, took the first shot and then ran the malware. This changed all the desktop icons to a egg. After this i ran the second shot and clicked `compare`.
+-  The program added itself to the run during startup in the registry, which I was asked to check. this was done at the location `HKU\S-1-5-21-1966530601-3185510712-10604624-1008\Software\Microsoft\Windows\CurrentVersion\Run\HopHelper`
+-  Next I used Procmon to analyse what all the malware was doing. Opened up procmon, then ran the malware again. After this I used a filter to only search for `HopHelper.exe` and applied another to search for only TCP operations.
+-  Using this I was able to find what protocol the malware was using to communicate, which was `http`.
 
 ## Flag
 
 ```
-
+1: F29C270068F865EF4A747E2683BFA07667BF64E768B38FBB9A2750A3D879CA33
+2: THM{STRINGS_FOUND}
+3: HKU\S-1-5-21-1966530601-3185510712-10604624-1008\Software\Microsoft\Windows\CurrentVersion\Run\HopHelper: "C:\Users\DFIRUser\Desktop\HopHelper\HopHelper.exe"
+4: HTTP
 ```
 
 
 ## Concepts learnt
-
-- 
+- Checksums - used within cyber security to track and catalogue files and executables. For example, you can Google the checksum to see if this has been identified before.
+-  RegShot
+-  Procmon
 
 
 ## Notes
-
+None
 
 
 ## Resources
--
-
+None
 
 
 
