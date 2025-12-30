@@ -344,4 +344,36 @@ None
 
 
 
+# 7. Network Discovery - Scan-ta Clause
+
+> Discover how to scan network ports and uncover what is hidden behind them.
+
+## Solution
+- Identified what services the server is exposing to the internet using `Nmap` to probe for open ports. Used a Full Range Scan with the `-p-` flag and used the `--script=banner` flag to grab service information as `nmap -p- --script=banner MACHINE_IP`
+- The scan identified an FTP server on a non-standard port `21212`, and this got me the first key.
+- For the second key, I checked Port `25251` using `nc` to interact with the custom service.
+- For the third key, I used `dig` and ran `dig @10.48.141.59 TXT key3.tbfc.local +short` and got the third key.
+- By entering the combined keys into the web interface at `http://MACHINE_IP`, I gained access to the Secret Admin Console.
+- Used the command `mysql -D tbfcqa01 -e "select * from flags;"` to get the final flag `THM{4ll_s3rvice5_d1sc0vered}`.
+
+## Flag
+```
+1: Pwned by HopSec
+2: 3aster_
+3: 15_th3_
+4: n3w_xm45
+5: 3306
+6: THM{4ll_s3rvice5_d1sc0vered}
+```
+
+## Concepts learnt
+- Port scanning
+- Nmap
+- TCP and UDP
+
+## Notes
+None
+
+## Resources
+None
 
