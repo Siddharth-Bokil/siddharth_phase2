@@ -412,3 +412,31 @@ None
 <br><br><br>
 
 
+# 9. Passwords - A Cracking Christmas
+> Learn how to crack password-based encrypted files.
+
+## Solution
+- Used `pdfcrack`. Ran `dfcrack -f flag.pdf -w /usr/share/wordlists/rockyou.txt` and got the password to the pdf as `naugthylist`, giving me the first flag.
+- Used `johntheripper`. Ran `john --wordlist=/usr/share/wordlists/rockyou.txt ziphash.txt` and got the password as `winter4ever` giving me the second flag.
+
+## Flag
+```
+THM{Cr4ck1ng_PDFs_1s_34$y}
+THM{Cr4ck1n6_z1p$_1s_34$yyyy}
+```
+
+## Concepts learnt
+- pdfcrack
+- johntheripper
+
+## Notes
+None
+
+## Resources
+None
+
+
+
+<br><br><br>
+***
+<br><br><br>
