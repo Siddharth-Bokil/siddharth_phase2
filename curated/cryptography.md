@@ -219,10 +219,10 @@ nite{t0_b3_X0R_n0t_t0_b3333}
 
 ## Concepts learnt:
 
-- Xor Properties -
-      - Plaintext ^ Key = Ciphertext
-      - Ciphertext ^ Key = Plaintext
-      - Plaintext ^ Ciphertext = Key
+- Xor Properties
+  - Plaintext ^ Key = Ciphertext
+  - Ciphertext ^ Key = Plaintext
+  - Plaintext ^ Ciphertext = Key
 - Byte rotation - Left rotate and right rotate
 - Magic numbers
 
