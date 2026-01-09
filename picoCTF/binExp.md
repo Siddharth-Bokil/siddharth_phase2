@@ -1,7 +1,5 @@
 # 1. Buffer Overflow 0
-> Let's start off simple, can you overflow the correct buffer? The program is available here. You can view source here.
-
-Additional details will be available after launching your challenge instance.
+> Let's start off simple, can you overflow the correct buffer? The program is available here. You can view source here. Additional details will be available after launching your challenge instance.
 
 ## Solution:
 
