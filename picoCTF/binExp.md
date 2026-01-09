@@ -3,7 +3,7 @@
 
 ## Solution:
 
-- Looking at the code, I saw that the input was being copied to a string of max size 16. To break the program, I just had to input a string have more than 16 characters.
+- Looking at the code, I saw that the input was being copied to a string of max size 16. To break the program, I just had to input a string having more than 16 characters.
 ```
 sid@sidsAsusZenbook:~/cryptoTP$ nc saturn.picoctf.net 62468
 Input: hi
